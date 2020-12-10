@@ -2,9 +2,9 @@
   <div id="product-list-two">
     <h2>Product List Two</h2>
     <ul>
-      <li v-for="product in products">
+      <li v-for="product in saleProducts">
         <span class="name">{{product.name}}</span>
-        <span class="price">{{product.price}}</span>
+        <span class="price">&pound {{product.price}}</span>
       </li>
     </ul>
 
@@ -13,9 +13,14 @@
 
 <script>
 export default {
+  //compoted properties will only watch certain variables that appear in this property
+  //not like method which will run all the methods everytime when any variables change
   computed:{
     products(){
       return this.$store.state.products
+    },
+    saleProducts(){
+      return this.$store.getters.saleProducts
     }
   }
 }
